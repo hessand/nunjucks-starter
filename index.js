@@ -8,9 +8,10 @@ const path = require('path');
 const nunjucks = require('nunjucks');
 
 const app = express();
+const routes = require('./routes/route')(app);
 
 app.set('port', process.env.PORT || 9080);
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 nunjucks.configure('views', {
     autoescape: true,
@@ -19,14 +20,16 @@ nunjucks.configure('views', {
 
 app.get('/', function(req, res) {
     res.render('index.html', {
-        title : "Sample Node Express + Nunjucks app"
+        title : "Sample Node Express + Nunjucks app",
+        body : "This is a route"
     });
 });
 
 
 app.get('/test/', function(req, res) {
     res.render('index.html', {
-        title : "Test url"
+        title : "Test url",
+        body: "This is another route"
     });
 });
 
