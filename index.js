@@ -5,17 +5,19 @@
 //////////////////////////////
 const express = require('express');
 const path = require('path');
+const chokidar = require('chokidar');
 const nunjucks = require('nunjucks');
 
 const app = express();
 const routes = require('./routes/route')(app);
 
-app.set('port', process.env.PORT || 9080);
+app.set('port', process.env.PORT || 8080);
 app.use(express.static('public'));
 
 nunjucks.configure('views', {
     autoescape: true,
-    express: app
+    express: app,
+    watch: true
 });
 
 app.get('/', function(req, res) {

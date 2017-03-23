@@ -16,8 +16,8 @@ const sass = require('gulp-sass');
 //////////////////////////////
 gulp.task('browser-sync', ['nodemon'], function() {
   browserSync({
-    proxy: "localhost:9080",  // local node app address
-    port: 9000,  // use *different* port than above
+    //proxy: "localhost:8080",  // local node app address
+    port: 8082,  // use *different* port than above
     notify: true
   });
 });
@@ -59,6 +59,6 @@ gulp.task('nodemon', function (cb) {
 });
 
 gulp.task('default', ['browser-sync'], function () {
-  gulp.watch(['public/*.html'], reload);
+  gulp.watch(['views/*.html'], reload);
   gulp.watch(['public/scss/**/*.scss'], ['sass']);
 });
