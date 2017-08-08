@@ -59,6 +59,6 @@ gulp.task('nodemon', function (cb) {
 });
 
 gulp.task('default', ['browser-sync'], function () {
-  gulp.watch(['views/**/*.html'], reload);
+  gulp.watch(['views/*.html'], reload);
   gulp.watch(['public/scss/**/*.scss'], ['sass']);
 });
